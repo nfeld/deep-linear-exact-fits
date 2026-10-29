@@ -1,0 +1,9 @@
+# TeX build artifacts; published PDFs and checking evidence remain tracked.
+paper/*.aux
+paper/*.log
+paper/*.toc
+paper/*.out
+paper/*.xdv
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk

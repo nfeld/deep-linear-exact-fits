@@ -1,0 +1,3 @@
+# Tools only: keep proof, manuscript and logs out of the image build context.
+*
+!Containerfile

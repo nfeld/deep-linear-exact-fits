@@ -1,0 +1,649 @@
+@MAIS.ExactFitStatement.exact_fit_classification : ∀ {D : ℕ} (n : Fin (D + 1) → ℕ)
+  (μ : MeasureTheory.Measure (MAIS.ExactFitStatement.Chain n)) [μ.IsAddHaarMeasure] (A : MAIS.ExactFitStatement.Chain n)
+  (Φ : Matrix (Fin (n (Fin.last D))) (Fin (n 0)) ℝ),
+  MAIS.ExactFitStatement.product n A = Φ →
+    ∀ (φ : MAIS.ExactFitStatement.Chain n → ℝ),
+      ContinuousAt φ A →
+        0 < φ A →
+          ∃ c m,
+            MAIS.Run2ArithmeticPositiveData.exactFitPairs n (MAIS.ExactFitStatement.rankTable n A) = {(c, m)} ∧
+              ↑(Module.finrank ℝ (MAIS.ExactFitStatement.Chain n)) -
+                    ⨅ r, ⨅ (_ : 0 < r), dimH ({B | MAIS.ExactFitStatement.product n B = Φ} ∩ Metric.ball A r) =
+                  ↑c ∧
+                ∀ (lam : ℝ) (m' : ℕ),
+                  MAIS.DirectBandOrder.HasOrder
+                      (fun δ ε =>
+                        (μ.withDensity fun B => ENNReal.ofReal (φ B))
+                          {B |
+                            B ∈ MAIS.ExactFitStatement.entryBall n A δ ∧
+                              |MAIS.ExactFitStatement.halfLoss n Φ B - MAIS.ExactFitStatement.halfLoss n Φ A| < ε})
+                      lam m' ↔
+                    lam = ↑c / 2 ∧ m' = m
+@MAIS.ExactFitStatement.exact_fit_classification : ∀ {D : Nat}
+  (n :
+    Fin
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))) →
+      Nat)
+  (μ :
+    @MeasureTheory.Measure.{0} (@MAIS.ExactFitStatement.Chain D n)
+      (@MeasurableSpace.pi.{0, 0} (Fin D)
+        (fun (e : Fin D) =>
+          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+        fun (a : Fin D) =>
+        @Matrix.instMeasurableSpace.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D a))
+          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D a)) Real Real.measurableSpace))
+  [@MeasureTheory.Measure.IsAddHaarMeasure.{0} (@MAIS.ExactFitStatement.Chain D n)
+      (@Pi.addGroup.{0, 0} (Fin D)
+        (fun (e : Fin D) =>
+          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+        fun (i : Fin D) =>
+        @Matrix.addGroup.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D i))
+          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D i)) Real Real.instAddGroup)
+      (@Pi.topologicalSpace.{0, 0} (Fin D)
+        (fun (e : Fin D) =>
+          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+        fun (i : Fin D) =>
+        @instTopologicalSpaceMatrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D i))
+          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D i)) Real
+          (@UniformSpace.toTopologicalSpace.{0} Real
+            (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))
+      (@MeasurableSpace.pi.{0, 0} (Fin D)
+        (fun (e : Fin D) =>
+          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+        fun (a : Fin D) =>
+        @Matrix.instMeasurableSpace.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D a))
+          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D a)) Real Real.measurableSpace)
+      μ]
+  (A : @MAIS.ExactFitStatement.Chain D n)
+  (Φ :
+    Matrix.{0, 0, 0} (Fin (n (Fin.last D)))
+      (Fin
+        (n
+          (@OfNat.ofNat.{0}
+            (Fin
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (nat_lit 0)
+            (@Fin.instOfNat
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@instNeZeroNatHAdd_1 D (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+              (nat_lit 0)))))
+      Real)
+  (hfit :
+    @Eq.{1}
+      (Matrix.{0, 0, 0} (Fin (n (Fin.last D)))
+        (Fin
+          (n
+            (@OfNat.ofNat.{0}
+              (Fin
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (nat_lit 0)
+              (@Fin.instOfNat
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                (@instNeZeroNatHAdd_1 D (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                  (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+                (nat_lit 0)))))
+        Real)
+      (@MAIS.ExactFitStatement.product D n A) Φ)
+  (φ : @MAIS.ExactFitStatement.Chain D n → Real)
+  (hφ :
+    @ContinuousAt.{0, 0} (@MAIS.ExactFitStatement.Chain D n) Real
+      (@Pi.topologicalSpace.{0, 0} (Fin D)
+        (fun (e : Fin D) =>
+          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+        fun (i : Fin D) =>
+        @instTopologicalSpaceMatrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D i))
+          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D i)) Real
+          (@UniformSpace.toTopologicalSpace.{0} Real
+            (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))
+      (@UniformSpace.toTopologicalSpace.{0} Real (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) φ
+      A)
+  (hφA : @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) (φ A)),
+  @Exists.{1} Nat fun (c : Nat) =>
+    @Exists.{1} Nat fun (m : Nat) =>
+      And
+        (@Eq.{1} (Finset.{0} (Prod.{0, 0} Nat Nat))
+          (@MAIS.Run2ArithmeticPositiveData.exactFitPairs D n (@MAIS.ExactFitStatement.rankTable D n A))
+          (@Singleton.singleton.{0, 0} (Prod.{0, 0} Nat Nat) (Finset.{0} (Prod.{0, 0} Nat Nat))
+            (@Finset.instSingleton.{0} (Prod.{0, 0} Nat Nat)) (@Prod.mk.{0, 0} Nat Nat c m)))
+        (And
+          (@Eq.{1} ENNReal
+            (@HSub.hSub.{0, 0, 0} ENNReal ENNReal ENNReal (@instHSub.{0} ENNReal ENNReal.instSub)
+              (@Nat.cast.{0} ENNReal
+                (@AddMonoidWithOne.toNatCast.{0} ENNReal
+                  (@AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddCommMonoidWithOne))
+                (@Module.finrank.{0, 0} Real (@MAIS.ExactFitStatement.Chain D n) Real.semiring
+                  (@Pi.addCommMonoid.{0, 0} (Fin D)
+                    (fun (e : Fin D) =>
+                      Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                        (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                    fun (i : Fin D) =>
+                    @Matrix.addCommMonoid.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D i))
+                      (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D i)) Real Real.instAddCommMonoid)
+                  (@Pi.module.{0, 0, 0} (Fin D)
+                    (fun (e : Fin D) =>
+                      Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                        (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                    Real Real.semiring
+                    (fun (i : Fin D) =>
+                      @Matrix.addCommMonoid.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D i))
+                        (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D i)) Real Real.instAddCommMonoid)
+                    fun (i : Fin D) =>
+                    @Matrix.module.{0, 0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D i))
+                      (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D i)) Real Real Real.semiring
+                      Real.instAddCommMonoid (@Semiring.toModule.{0} Real Real.semiring))))
+              (@iInf.{0, 1} ENNReal Real
+                (@ConditionallyCompletePartialOrderInf.toInfSet.{0} ENNReal
+                  (@ConditionallyCompletePartialOrder.toConditionallyCompletePartialOrderInf.{0} ENNReal
+                    (@ConditionallyCompleteLattice.toConditionallyCompletePartialOrder.{0} ENNReal
+                      (@ConditionallyCompleteLinearOrder.toConditionallyCompleteLattice.{0} ENNReal
+                        (@ConditionallyCompleteLinearOrderBot.toConditionallyCompleteLinearOrder.{0} ENNReal
+                          (@CompleteLinearOrder.toConditionallyCompleteLinearOrderBot.{0} ENNReal
+                            ENNReal.instCompleteLinearOrder))))))
+                fun (r : Real) =>
+                @iInf.{0, 0} ENNReal
+                  (@LT.lt.{0} Real Real.instLT
+                    (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) r)
+                  (@ConditionallyCompletePartialOrderInf.toInfSet.{0} ENNReal
+                    (@ConditionallyCompletePartialOrder.toConditionallyCompletePartialOrderInf.{0} ENNReal
+                      (@ConditionallyCompleteLattice.toConditionallyCompletePartialOrder.{0} ENNReal
+                        (@ConditionallyCompleteLinearOrder.toConditionallyCompleteLattice.{0} ENNReal
+                          (@ConditionallyCompleteLinearOrderBot.toConditionallyCompleteLinearOrder.{0} ENNReal
+                            (@CompleteLinearOrder.toConditionallyCompleteLinearOrderBot.{0} ENNReal
+                              ENNReal.instCompleteLinearOrder))))))
+                  fun
+                    (x :
+                      @LT.lt.{0} Real Real.instLT
+                        (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) r) =>
+                  @dimH.{0} (@MAIS.ExactFitStatement.Chain D n)
+                    (@emetricSpacePi.{0, 0} (Fin D)
+                      (fun (e : Fin D) =>
+                        Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                      (Fin.fintype D) fun (b : Fin D) =>
+                      @MetricSpace.toEMetricSpace.{0}
+                        (Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D b))
+                          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D b)) Real)
+                        (@NormedAddCommGroup.toMetricSpace.{0}
+                          (Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D b))
+                            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D b)) Real)
+                          (@Matrix.frobeniusNormedAddCommGroup.{0, 0, 0}
+                            (@MAIS.ExactFitStatement.idx D n (@Fin.succ D b))
+                            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D b)) Real (Fin.fintype (n (@Fin.succ D b)))
+                            (Fin.fintype (n (@Fin.castSucc D b))) Real.normedAddCommGroup)))
+                    (@Inter.inter.{0} (Set.{0} (@MAIS.ExactFitStatement.Chain D n))
+                      (@Set.instInter.{0} (@MAIS.ExactFitStatement.Chain D n))
+                      (@Set.ofPred.{0} (@MAIS.ExactFitStatement.Chain D n)
+                        fun (B : @MAIS.ExactFitStatement.Chain D n) =>
+                        @Eq.{1}
+                          (Matrix.{0, 0, 0} (Fin (n (Fin.last D)))
+                            (Fin
+                              (n
+                                (@OfNat.ofNat.{0}
+                                  (Fin
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+                                  (nat_lit 0)
+                                  (@Fin.instOfNat
+                                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) D
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                                    (@instNeZeroNatHAdd_1 D
+                                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                                      (@Nat.instNeZeroSucc
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+                                    (nat_lit 0)))))
+                            Real)
+                          (@MAIS.ExactFitStatement.product D n B) Φ)
+                      (@Metric.ball.{0} (@MAIS.ExactFitStatement.Chain D n)
+                        (@pseudoMetricSpacePi.{0, 0} (Fin D)
+                          (fun (e : Fin D) =>
+                            Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                              (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                          (Fin.fintype D) fun (b : Fin D) =>
+                          @SeminormedAddCommGroup.toPseudoMetricSpace.{0}
+                            (Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D b))
+                              (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D b)) Real)
+                            (@Matrix.frobeniusSeminormedAddCommGroup.{0, 0, 0}
+                              (@MAIS.ExactFitStatement.idx D n (@Fin.succ D b))
+                              (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D b)) Real
+                              (Fin.fintype (n (@Fin.succ D b))) (Fin.fintype (n (@Fin.castSucc D b)))
+                              (@NonUnitalSeminormedRing.toSeminormedAddCommGroup.{0} Real
+                                (@NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing.{0} Real
+                                  (@SeminormedCommRing.toNonUnitalSeminormedCommRing.{0} Real
+                                    (@NormedCommRing.toSeminormedCommRing.{0} Real Real.normedCommRing))))))
+                        A r))))
+            (@Nat.cast.{0} ENNReal
+              (@AddMonoidWithOne.toNatCast.{0} ENNReal
+                (@AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddCommMonoidWithOne))
+              c))
+          (∀ (lam : Real) (m' : Nat),
+            Iff
+              (MAIS.DirectBandOrder.HasOrder
+                (fun (δ ε : Real) =>
+                  @DFunLike.coe.{1, 1, 1}
+                    (@MeasureTheory.Measure.{0} (@MAIS.ExactFitStatement.Chain D n)
+                      (@MeasurableSpace.pi.{0, 0} (Fin D)
+                        (fun (e : Fin D) =>
+                          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                        fun (a : Fin D) =>
+                        @Matrix.instMeasurableSpace.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D a))
+                          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D a)) Real Real.measurableSpace))
+                    (Set.{0} (@MAIS.ExactFitStatement.Chain D n))
+                    (fun (x : Set.{0} (@MAIS.ExactFitStatement.Chain D n)) => ENNReal)
+                    (@MeasureTheory.Measure.instFunLike.{0} (@MAIS.ExactFitStatement.Chain D n)
+                      (@MeasurableSpace.pi.{0, 0} (Fin D)
+                        (fun (e : Fin D) =>
+                          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                        fun (a : Fin D) =>
+                        @Matrix.instMeasurableSpace.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D a))
+                          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D a)) Real Real.measurableSpace))
+                    (@MeasureTheory.Measure.withDensity.{0} (@MAIS.ExactFitStatement.Chain D n)
+                      (@MeasurableSpace.pi.{0, 0} (Fin D)
+                        (fun (e : Fin D) =>
+                          Matrix.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D e))
+                            (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D e)) Real)
+                        fun (a : Fin D) =>
+                        @Matrix.instMeasurableSpace.{0, 0, 0} (@MAIS.ExactFitStatement.idx D n (@Fin.succ D a))
+                          (@MAIS.ExactFitStatement.idx D n (@Fin.castSucc D a)) Real Real.measurableSpace)
+                      μ fun (B : @MAIS.ExactFitStatement.Chain D n) => ENNReal.ofReal (φ B))
+                    (@Set.ofPred.{0} (@MAIS.ExactFitStatement.Chain D n) fun (B : @MAIS.ExactFitStatement.Chain D n) =>
+                      And
+                        (@Membership.mem.{0, 0} (@MAIS.ExactFitStatement.Chain D n)
+                          (Set.{0} (@MAIS.ExactFitStatement.Chain D n))
+                          (@Set.instMembership.{0} (@MAIS.ExactFitStatement.Chain D n))
+                          (@MAIS.ExactFitStatement.entryBall D n A δ) B)
+                        (@LT.lt.{0} Real Real.instLT
+                          (@abs.{0} Real Real.lattice Real.instAddGroup
+                            (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+                              (@MAIS.ExactFitStatement.halfLoss D n Φ B) (@MAIS.ExactFitStatement.halfLoss D n Φ A)))
+                          ε)))
+                lam m')
+              (And
+                (@Eq.{1} Real lam
+                  (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                    (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                    (@Nat.cast.{0} Real Real.instNatCast c)
+                    (@OfNat.ofNat.{0} Real (nat_lit 2)
+                      (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast
+                        (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                          (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))))))
+                (@Eq.{1} Nat m' m))))
+'MAIS.ExactFitStatement.exact_fit_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+FINGERPRINT-BEGIN (79 definitions, inductive types and constructors; 17 distinct theorem statements)
+theorem MAIS.ExactFitStatement.exact_fit_classification params=[] type=7871270065534134092-13898216000514943545
+MAIS.DirectBandOrder.HasOrder | def body=8457913068227304476-10132624138115077198 | params=[] | type=11846532157823200715-12975543033672394351
+MAIS.ExactFitStatement.Chain | def body=13325065251431144755-11742098800780950090 | params=[] | type=13587113986312290169-9756809470233465320
+MAIS.ExactFitStatement.entryBall | def body=8551134503121792724-872645974398319128 | params=[] | type=10047016310852353032-12375993532366587456
+MAIS.ExactFitStatement.halfLoss | def body=7342381246734332526-15973736222353346075 | params=[] | type=3165536362514308450-13349720140155416619
+MAIS.ExactFitStatement.idx | def body=6934500646741139534-7334779016987650975 | params=[] | type=3882820067456738424-586064073803896793
+MAIS.ExactFitStatement.product | def body=12960186905386293050-1697308740116684308 | params=[] | type=7465472998107729324-14148961984404877848
+MAIS.ExactFitStatement.rankTable | def body=11996315974503816746-16062257838767158842 | params=[] | type=9037083425161279582-11224421939130459174
+MAIS.IntervalCochainProduct.Linked | def body=14778289180797840306-5732118171487103304 | params=[u_1] | type=5258950755794545347-12994454430766499374
+MAIS.IntervalCochainProduct.NormalIndex | def body=9495762547584958100-6014966317889626978 | params=[u_1] | type=14341281906852075107-12067157693136408570
+MAIS.IntervalCochainProduct.linked_decidable | def body=16360701005730580890-2372930931614988564 | params=[u_1] | type=7391428866985968618-4569897727887419786
+MAIS.IntervalPositivePotentials.denominator | def body=17678632873897770591-14873265463868000669 | params=[u_1] | type=4462893850743376838-14974432363395135896
+MAIS.IntervalPositivePotentials.edgeWeight | def body=459666562248359447-6263170109531629172 | params=[u_1] | type=11681994411795797602-12729667601551225473
+MAIS.IntervalPositivePotentials.potential | def body=15062836817630982552-14853864435300464894 | params=[u_1] | type=4086885973003728617-10807602974421671851
+MAIS.LinearChain.Chain | inductive params=7 indices=0 rec=false ctors=[MAIS.LinearChain.Chain.mk] | params=[u, v, w] | type=12275613049017421296-4946966096864027340
+MAIS.LinearChain.Chain.map | def body=7697934391255346658-14573156335722518606 | params=[u, v, w] | type=12088918462343748132-6389298969336810865
+MAIS.LinearChain.Chain.mk | constructor of=MAIS.LinearChain.Chain idx=0 params=7 fields=3 | params=[u, v, w] | type=13454776057481139764-4948435593657701983
+MAIS.LinearChain.arrowFunctor | def body=15134421258243736019-5640617559997110866 | params=[u, w] | type=315943368346452530-7885687041052327324
+MAIS.LinearChain.ofArrows | def body=644734305057906074-18264331459732444192 | params=[u, w] | type=5280783265241897588-6651742426105291054
+MAIS.MatrixChainIsomorphism.matrixArrows | def body=415148618063384309-5061515358352039825 | params=[w] | type=622642797322758805-4349594898722106360
+MAIS.MatrixChainIsomorphism.matrixChain | def body=10205843277291064555-10319585938795299304 | params=[w] | type=8177787829429734895-9206131457570321589
+MAIS.MatrixChainIsomorphism.pathMatrix | def body=1995552788632047113-16999653961364897303 | params=[w] | type=5825614242410704552-5847401456990621312
+MAIS.QuiverRealOrbit.Rep | def body=1328050961776069073-17393626878644541232 | params=[u_1] | type=6153999650973488539-4151784071769813578
+MAIS.Run2ArithmeticCriticalPathData.Edge | def body=14200692343182218245-9749274480249425380 | params=[] | type=16314783856953973654-4771423279540610128
+MAIS.Run2ArithmeticCriticalPathData.Matches | def body=1711907064548071895-3894919711346383921 | params=[] | type=12831428751329300644-4913965322498459581
+MAIS.Run2ArithmeticCriticalPathData.Node | def body=12945098934030115052-6936280939399303847 | params=[] | type=10693160493663892550-2364659744368825372
+MAIS.Run2ArithmeticCriticalPathData.PathIndex | def body=18027501040358150603-9695789321002934283 | params=[] | type=12115289520845357123-8766500882308953168
+MAIS.Run2ArithmeticCriticalPathData.RankLE | def body=1308623982538410913-13361470026807735438 | params=[] | type=1964130644904878975-5080630467762835781
+MAIS.Run2ArithmeticCriticalPathData.RankLT | def body=15495217054712689801-6328537614238543721 | params=[] | type=1964130644904878975-5080630467762835781
+MAIS.Run2ArithmeticCriticalPathData.capacity | def body=7638417514427997044-14748860956998890462 | params=[] | type=17125872455618381710-11131756596999380627
+MAIS.Run2ArithmeticCriticalPathData.coefficient | def body=2752518497640546533-11504485170591312821 | params=[] | type=18419916569506721369-11898476874929492485
+MAIS.Run2ArithmeticCriticalPathData.computedPairs | def body=5510891091686633518-5130682476831843591 | params=[] | type=12920271587323411930-4708466111429177545
+MAIS.Run2ArithmeticCriticalPathData.criticalDepth | def body=10066531755027773191-12844859469711520931 | params=[] | type=989993718617981699-4337613047872129157
+MAIS.Run2ArithmeticCriticalPathData.edgeDecidable | def body=6846654936731222080-2898451200678835455 | params=[] | type=7127744584545625127-12634868909709226870
+MAIS.Run2ArithmeticCriticalPathData.higherOutputValues | def body=8626386094883960330-16305162665663792169 | params=[] | type=8860695772946422194-6799039597271696204
+MAIS.Run2ArithmeticCriticalPathData.matchesDecidable | def body=11381489879048218341-3100806414008127090 | params=[] | type=5993276023651549663-890076737403184184
+MAIS.Run2ArithmeticCriticalPathData.nodeEdge | def body=13753742387585149884-9445854303281334550 | params=[] | type=4050205909607202705-3163235234541056743
+MAIS.Run2ArithmeticCriticalPathData.nodeEdgeDecidable | def body=5876021588632611405-8338185317174426061 | params=[] | type=4204559245015431834-14411123291477031846
+MAIS.Run2ArithmeticCriticalPathData.nodeWeight | def body=8934697385751800962-6101672921709989461 | params=[] | type=989993718617981699-4337613047872129157
+MAIS.Run2ArithmeticCriticalPathData.rankLEDecidable | def body=11701795883115271028-14380358179306207937 | params=[] | type=9238863562267397503-9688277370003656199
+MAIS.Run2ArithmeticCriticalPathData.rankLTDecidable | def body=12304401240713981715-16937962381548912022 | params=[] | type=9558727595272940610-14932231106565336195
+MAIS.Run2ArithmeticCriticalPathData.threshold | def body=2014688490375955799-12724298350460476226 | params=[] | type=14720466239894860205-7841555906763452674
+MAIS.Run2ArithmeticCriticalPathData.weight | def body=7065944400889596186-7686375919051907575 | params=[] | type=18419916569506721369-11898476874929492485
+MAIS.Run2ArithmeticCriticalPathDynamic.depthFuel | def body=13635111697294979470-217769515843063013 | params=[u_1] | type=5337112145908370546-13310422402342300175
+MAIS.Run2ArithmeticCriticalPathDynamic.depthFuel._f | def body=16580358160925209228-2946779180566995571 | params=[u_1] | type=1169553625917048408-7880200346752301883
+MAIS.Run2ArithmeticCriticalPathDynamic.depthFuel.match_1 | def body=4102614470503574661-2993921603960886927 | params=[u_1, u_2] | type=10952166449364000973-14431754642190478766
+MAIS.Run2ArithmeticPositiveData.ResidualCarrier | def body=15610222690434867794-659693888904617317 | params=[] | type=15538909679541331021-9715045950221528273
+MAIS.Run2ArithmeticPositiveData.exactFitPairs | def body=11901492186092454622-13157022719350267248 | params=[] | type=4605193469718507494-10480166082354078022
+MAIS.Run2ArithmeticPositiveData.regularCoefficient | def body=17774183371220459498-13622488400894536906 | params=[] | type=14429984136110176380-2310854090165894611
+MAIS.Run2ArithmeticPositiveData.residualArchitecture | def body=12172615128462240417-4915504317211135701 | params=[] | type=8166861095765335846-13640144504243855511
+MAIS.Run2ArithmeticPositiveData.residualBudget | def body=6434258490529953400-11256515032474146817 | params=[] | type=14429984136110176380-2310854090165894611
+MAIS.Run2ArithmeticPositiveData.residualDimensions | def body=16775701857161845377-294149619477529853 | params=[] | type=8166861095765335846-13640144504243855511
+MAIS.Run2ArithmeticPositiveData.residualNodes | def body=10253102469332270487-15837278329508983832 | params=[] | type=337203217647917852-6467423870353224504
+MAIS.Run2ArithmeticPositiveData.residualPairs | def body=10669122497776045189-15199402233149634601 | params=[] | type=9019777870058306206-2769559038873265859
+MAIS.Run2ArithmeticPositiveData.residualRanks | def body=15996363384739477256-10450084525403006179 | params=[] | type=9836590184153718185-3979771665643244175
+MAIS.Run2BarcodeEnumeration.pathRankInput | def body=6122981338303175744-17021321724412422037 | params=[u_1] | type=5774921354873314805-17986951575059935599
+MAIS.Run2BarcodeEnumerationData.Balanced | def body=12450588917187927941-8145350131811707648 | params=[] | type=1769326386653611998-10428671386972331130
+MAIS.Run2BarcodeEnumerationData.Endpoint | def body=5569682746342830431-5173517852007367934 | params=[] | type=12115289520845357123-8766500882308953168
+MAIS.Run2BarcodeEnumerationData.Feasible | def body=12992717900930115906-7720816461951472872 | params=[] | type=5064101709137260911-11142300820420075298
+MAIS.Run2BarcodeEnumerationData.IntervalKey | def body=275178365947433737-13293255398617945430 | params=[] | type=12115289520845357123-8766500882308953168
+MAIS.Run2BarcodeEnumerationData.Linked | def body=4576398719205510785-16429099674243344045 | params=[] | type=586546885364566253-10703476713356032989
+MAIS.Run2BarcodeEnumerationData.Multiplicities | def body=1488527190232975599-1840180140048078601 | params=[] | type=18437070633230608479-10359026961870578429
+MAIS.Run2BarcodeEnumerationData.Slot | def body=11016216010999072228-1879857301262776364 | params=[] | type=2767993897178247511-11069811408561863935
+MAIS.Run2BarcodeEnumerationData.Valid | def body=9919496146541214576-882511212162830769 | params=[] | type=1769326386653611998-10428671386972331130
+MAIS.Run2BarcodeEnumerationData.balancedDecidable | def body=18279491927297916541-5608786049052334578 | params=[] | type=1940540388097706064-17131844544714994735
+MAIS.Run2BarcodeEnumerationData.birth | def body=1862688922210100060-2174790372667492938 | params=[] | type=11159741705960362998-6002945005883775644
+MAIS.Run2BarcodeEnumerationData.death | def body=17504961710544964506-335682799528670180 | params=[] | type=11159741705960362998-6002945005883775644
+MAIS.Run2BarcodeEnumerationData.feasibleDecidable | def body=358348324949130322-17762466509186482963 | params=[] | type=11659927750403542558-2008375870910446012
+MAIS.Run2BarcodeEnumerationData.incoming | def body=378837742507643562-14791540989646613480 | params=[] | type=11159741705960362998-6002945005883775644
+MAIS.Run2BarcodeEnumerationData.linkedDecidable | def body=17174065384142195556-12481618305110738656 | params=[] | type=1136303636260501376-4929912965774495122
+MAIS.Run2BarcodeEnumerationData.linkedDecidable._aux_1 | def body=7038758644838296173-9948717325811182644 | params=[] | type=1136303636260501376-4929912965774495122
+MAIS.Run2BarcodeEnumerationData.outgoing | def body=8797873512677038708-11940565011483717825 | params=[] | type=11159741705960362998-6002945005883775644
+MAIS.Run2BarcodeEnumerationData.outputCount | def body=14880002819000285985-4750845571893525676 | params=[] | type=7428805624701039863-1266638736050406369
+MAIS.Run2BarcodeEnumerationData.pathCount | def body=14662384557311827219-8782777211174733382 | params=[] | type=16203424891524319978-4647346238441274883
+MAIS.Run2BarcodeEnumerationData.validDecidable | def body=16753939523745968175-8059770424061871168 | params=[] | type=355236393678190925-3374892275889855120
+MAIS.Run2BarcodeEnumerationData.vertexCount | def body=11982050220497317000-2863557343858531145 | params=[] | type=5117570997847711207-5337385844611623261
+MAIS.Run2BarcodeFastEnumerationData.Assignment | def body=2424355974553108558-10654869874693787403 | params=[] | type=18437070633230608479-10359026961870578429
+MAIS.Run2BarcodeFastEnumerationData.ValidKey | def body=4621474855066983478-13090626056496912862 | params=[] | type=12115289520845357123-8766500882308953168
+MAIS.Run2BarcodeFastEnumerationData.fastCandidates | def body=18020649114898459609-874891212425402012 | params=[] | type=17331633470156308482-5411629368578283249
+MAIS.Run2BarcodeFastEnumerationData.histogram | def body=9989250432618131098-6966200592459685309 | params=[] | type=13076218467081586475-6473549656263162930
+theorem-statement params=0 type=10102864084491738880-6063960318597570605
+theorem-statement params=0 type=11500065286650624067-8955670856998603540
+theorem-statement params=0 type=18130392146095376436-3726884053165784518
+theorem-statement params=0 type=18276334872136643168-2338351762379021444
+theorem-statement params=0 type=2073682342292401903-12824124420217177613
+theorem-statement params=0 type=2255073773246791973-2363378192857796206
+theorem-statement params=0 type=4997419476188292008-11017290375449143908
+theorem-statement params=0 type=8758348024872362717-1038930707081726135
+theorem-statement params=0 type=9894331527418816266-2941626296732150710
+theorem-statement params=1 type=10543312184887834934-13873522654736758604
+theorem-statement params=1 type=1073662151175075001-5993582924754140323
+theorem-statement params=1 type=10984454333305072860-5833325419041256734
+theorem-statement params=1 type=573635690865707422-4170862452754345091
+theorem-statement params=1 type=6195761752803534458-16512751585145609494
+theorem-statement params=2 type=12795453670215778834-6795575726085807198
+theorem-statement params=2 type=437796535367127360-4115466179942340909
+theorem-statement params=2 type=9370645472445080107-1364069594745973253
+FINGERPRINT-END
+
+EXTERNAL-BEGIN (263 external constants other than theorems)
+AddCommGroup
+AddCommGroup.toAddCommMonoid
+AddCommMonoid.toAddMonoid
+AddCommMonoidWithOne.toAddMonoidWithOne
+AddMonoidWithOne.toNatCast
+And
+CategoryTheory.ComposableArrows
+CategoryTheory.ComposableArrows.mkOfObjOfMapSucc
+CategoryTheory.Functor.map
+CategoryTheory.Functor.obj
+CategoryTheory.homOfLE
+CommSemiring.toSemiring
+CompleteLinearOrder.toConditionallyCompleteLinearOrderBot
+ConditionallyCompleteLattice.toConditionallyCompletePartialOrder
+ConditionallyCompleteLinearOrder.toConditionallyCompleteLattice
+ConditionallyCompleteLinearOrderBot.toConditionallyCompleteLinearOrder
+ConditionallyCompletePartialOrder.toConditionallyCompletePartialOrderInf
+ConditionallyCompletePartialOrderInf.toInfSet
+ContinuousAt
+DFinsupp.instEquivLikeLinearEquiv
+DFunLike.coe
+Decidable
+DecidableEq
+DecidableRel
+Distrib.toMul
+DistribLattice.toLattice
+DistribMulAction.toMulAction
+DivInvMonoid.toDiv
+DivisionRing.toRing
+DivisionSemiring.toSemiring
+ENNReal
+ENNReal.instAddCommMonoidWithOne
+ENNReal.instCommSemiring
+ENNReal.instCompleteLinearOrder
+ENNReal.instLE
+ENNReal.instSub
+ENNReal.ofReal
+Eq
+EquivLike.toFunLike
+Exists
+Field
+Field.toDivisionRing
+Field.toSemifield
+Fin
+Fin.castSucc
+Fin.decLe
+Fin.fintype
+Fin.instLinearOrder
+Fin.instOfNat
+Fin.instPartialOrder
+Fin.last
+Fin.mk
+Fin.succ
+Fin.val
+Finset
+Finset.Subtype.fintype
+Finset.attach
+Finset.filter
+Finset.image
+Finset.instSetLike
+Finset.instSingleton
+Finset.min
+Finset.sum
+Finset.sup
+Finset.univ
+Fintype
+Fintype.card
+Fintype.decidableForallFintype
+Fintype.decidablePiFintype
+Function.hasSMul
+HAdd.hAdd
+HDiv.hDiv
+HMul.hMul
+HPow.hPow
+HSub.hSub
+Iff
+Inter.inter
+LE.le
+LT.lt
+Lattice.toSemilatticeInf
+Lattice.toSemilatticeSup
+LinearEquiv
+LinearMap
+LinearMap.addCommMonoid
+LinearMap.comp
+LinearMap.id
+LinearMap.module
+LinearMap.toMatrix'
+LinearOrder
+Matrix
+Matrix.addCommMonoid
+Matrix.addGroup
+Matrix.frobeniusNormedAddCommGroup
+Matrix.frobeniusSeminormedAddCommGroup
+Matrix.instMeasurableSpace
+Matrix.module
+Matrix.rank
+Matrix.sub
+Matrix.toLin'
+MeasurableSpace.pi
+MeasureTheory.Measure
+MeasureTheory.Measure.IsAddHaarMeasure
+MeasureTheory.Measure.instFunLike
+MeasureTheory.Measure.withDensity
+Membership.mem
+Metric.ball
+MetricSpace.toEMetricSpace
+Module
+Module.finrank
+Module.toDistribMulAction
+ModuleCat
+ModuleCat.Hom.hom
+ModuleCat.moduleCategory
+ModuleCat.of
+ModuleCat.ofHom
+Monoid.toNPow
+Monoid.toSemigroup
+MulAction.toSemigroupAction
+NPow.toPow
+Nat
+Nat.AtLeastTwo
+Nat.below
+Nat.brecOn
+Nat.casesOn
+Nat.cast
+Nat.decLe
+Nat.decLt
+Nat.decidableExistsFin
+Nat.decidableForallFin
+Nat.instAddCommMonoid
+Nat.instLattice
+Nat.instLinearOrder
+Nat.instOrderBot
+Nat.succ
+Ne
+NeZero
+Neg.neg
+NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing
+NonUnitalSeminormedRing.toSeminormedAddCommGroup
+Norm.norm
+NormedAddCommGroup.toMetricSpace
+NormedAddCommGroup.toNorm
+NormedCommRing.toSeminormedCommRing
+Not
+OfNat.ofNat
+One.toOfNat1
+Option
+Option.instDecidableEq
+Option.map
+Option.some
+PProd
+PartialOrder.toPreorder
+Pi.Function.module
+Pi.addCommGroup
+Pi.addCommMonoid
+Pi.addGroup
+Pi.instFintype
+Pi.module
+Pi.topologicalSpace
+Preorder.smallCategory
+Preorder.toLE
+Prod
+Prod.fst
+Prod.mk
+Prod.snd
+PseudoMetricSpace.toUniformSpace
+Rat
+Rat.addCommMonoid
+Rat.instDiv
+Rat.instNatCast
+Rat.instOfNat
+Rat.instSub
+Real
+Real.exp
+Real.instAddCommGroup
+Real.instAddCommMonoid
+Real.instAddGroup
+Real.instCommSemiring
+Real.instDivInvMonoid
+Real.instField
+Real.instLE
+Real.instLT
+Real.instMonoid
+Real.instMul
+Real.instNatCast
+Real.instNeg
+Real.instOne
+Real.instRing
+Real.instSub
+Real.instZero
+Real.lattice
+Real.log
+Real.measurableSpace
+Real.normedAddCommGroup
+Real.normedCommRing
+Real.pseudoMetricSpace
+Real.rpow
+Real.semiring
+Real.sqrt
+Ring.toSemiring
+RingHom.id
+RingHomCompTriple
+RingHomInvPair
+SMulCommClass
+Semifield.toDivisionSemiring
+SemigroupAction.toSMul
+SemilatticeInf.toPartialOrder
+SeminormedAddCommGroup.toPseudoMetricSpace
+SeminormedCommRing.toNonUnitalSeminormedCommRing
+Semiring.toAddCommMonoid
+Semiring.toModule
+Semiring.toMonoid
+Semiring.toNonAssocSemiring
+Set
+Set.instInter
+Set.instMembership
+Set.ofPred
+SetLike.instMembership
+Sigma
+Sigma.fst
+Sigma.instFintype
+Singleton.singleton
+Subtype
+Subtype.fintype
+Subtype.val
+UniformSpace.toTopologicalSpace
+WithTop.untopD
+Zero.ofOfNat0
+Zero.toOfNat0
+abs
+dimH
+dite
+emetricSpacePi
+forall_prop_decidable
+iInf
+id
+inferInstance
+instAddNat
+instDecidableAnd
+instDecidableEqFin
+instDecidableEqNat
+instDecidableEqProd
+instDecidableEqRat
+instDecidableNot
+instDistribLatticeOfLinearOrder
+instDistribOfSemiring
+instFintypeOption
+instFintypeProd
+instHAdd
+instHDiv
+instHMul
+instHPow
+instHSub
+instLEFin
+instLENat
+instLTNat
+instMulNat
+instOfNatAtLeastTwo
+instOfNatNat
+instSubNat
+instTopologicalSpaceMatrix
+ite
+pseudoMetricSpacePi
+EXTERNAL-END

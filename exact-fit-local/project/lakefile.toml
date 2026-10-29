@@ -1,0 +1,11 @@
+name = "exactfitcheck"
+defaultTargets = ["ExactFitTarget"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "664cbbe52927ce6acaa39ca35498336116e123b8"
+
+# The caller's exact source is copied to this internal module name.
+[[lean_lib]]
+name = "ExactFitTarget"

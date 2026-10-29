@@ -1,0 +1,176 @@
+'MAIS.PermutationRankOrder.first_difference_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.minimal_index_slack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.swap_rectangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.swap_rank_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.minimal_swap_preserves_rank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.exists_minimal_swap_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.finite_permutation_minimal_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.liftPermutation_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.rankWeight_swap_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MAIS.PermutationRankOrder.exists_first_difference' depends on axioms: [propext, Quot.sound]
+O77.answersO77_of_wishart : O77.External.RealWishartEigenvalueFormula →
+  ∀ {I O H : ℕ} (Phi : O77.Reconstruction0905.RM O I), 0 < I → 0 < O → Matrix.rank Phi < H → O77.AnswersO77 Phi
+def O77.AnswersO77 : {I O : ℕ} → {H : ℕ} → O77.Reconstruction0905.RM O I → Prop :=
+fun {I O H} Phi =>
+  (∀ (w : O77.Native.Parameters I O H),
+      w.2 * w.1 = Phi →
+        O77.RankData I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2) ∧
+          0 < ↑(O77.candidateTwiceLambda I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2)) / 2 ∧
+            ∀ (lam : ℝ) (m : ℕ),
+              O77.Native.HasLocalBandPair Phi w lam m ↔
+                lam = ↑(O77.candidateTwiceLambda I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2)) / 2 ∧
+                  m = O77.candidateMultiplicity I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2)) ∧
+    (∀ (a b : ℕ),
+        O77.RankData I O H (Matrix.rank Phi) a b ↔ ∃ w, w.2 * w.1 = Phi ∧ Matrix.rank w.1 = a ∧ Matrix.rank w.2 = b) ∧
+      (∀ (w : O77.Native.Parameters I O H),
+          w.2 * w.1 = Phi →
+            (O77.Native.IsThresholdMinimizer Phi w ↔
+              O77.MinimumRankCondition I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2))) ∧
+        IsLeast {lam | ∃ w, w.2 * w.1 = Phi ∧ ∃ m, O77.Native.HasLocalBandPair Phi w lam m}
+            (O77.Native.globalThresholdFormula I O H (Matrix.rank Phi)) ∧
+          IsGreatest {m | ∃ w, O77.Native.IsThresholdMinimizer Phi w ∧ ∃ lam, O77.Native.HasLocalBandPair Phi w lam m}
+              (if
+                  (I + O + H + Matrix.rank Phi) % 2 = 1 ∧
+                    O + Matrix.rank Phi ≤ I + H ∧ I + Matrix.rank Phi ≤ O + H ∧ H + Matrix.rank Phi ≤ I + O then
+                2
+              else 1) ∧
+            ∀ (D : O77.RungGeometry0906.SingularData I O (Matrix.rank Phi)),
+              D.target = Phi →
+                (∀ k ≤ Matrix.rank Phi, ∃ w, D.OnRung k w) ∧
+                  ∀ k < Matrix.rank Phi,
+                    ∀ (w : O77.Native.Parameters I O H), D.OnRung k w → O77.Native.HasLocalBandPair Phi w 1 1
+def O77.Native.IsThresholdMinimizer : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → Prop :=
+fun {I O H} Phi w =>
+  w.2 * w.1 = Phi ∧
+    ∃ lam m,
+      O77.Native.HasLocalBandPair Phi w lam m ∧
+        ∀ (z : O77.Native.Parameters I O H),
+          z.2 * z.1 = Phi → ∀ (mu : ℝ) (n : ℕ), O77.Native.HasLocalBandPair Phi z mu n → lam ≤ mu
+def O77.candidateTwiceLambda : ℕ → ℕ → ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun I O H r a b => O77.regularDim I O a b + O77.residualMin (O - b) (I - a) (O77.residualHidden H r a b)
+def O77.candidateMultiplicity : ℕ → ℕ → ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun I O H r a b => O77.residualMultiplicity (O - b) (I - a) (O77.residualHidden H r a b)
+def O77.regularDim : ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun I O a b => O * a + b * (I - a)
+def O77.residualHidden : ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun H r a b => H + r - (a + b)
+def O77.residualCost : ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun p q h t => (h - t) * (q - t) + p * t
+def O77.residualMin : ℕ → ℕ → ℕ → ℕ :=
+fun p q h => (O77.Arithmetic.minimumUpTo (O77.residualQuadratic p q h) (min h q)).toNat
+def O77.residualMinimizerList : ℕ → ℕ → ℕ → List ℕ :=
+fun p q h => O77.Arithmetic.minimizerList (O77.residualQuadratic p q h) (min h q)
+def O77.residualMultiplicity : ℕ → ℕ → ℕ → ℕ :=
+fun p q h => (O77.residualMinimizerList p q h).length
+def O77.Native.HasLocalBandPair : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ → ℕ → Prop :=
+fun {I O H} Phi w lam m => O77.Transport0906.RadiusOrder (O77.Native.bandVolume Phi w) lam m
+def O77.Transport0906.RadiusOrder : (ℝ → ℝ → ENNReal) → ℝ → ℕ → Prop :=
+fun V lam m =>
+  0 ≤ lam ∧
+    1 ≤ m ∧
+      ∃ rho, 0 < rho ∧ ∀ (delta : ℝ), 0 < delta → delta < rho → O77.Residual.EThetaZeroPowerLog (V delta) lam (m - 1)
+def O77.Residual.EThetaZeroPowerLog : (ℝ → ENNReal) → ℝ → ℕ → Prop :=
+fun V lam k =>
+  ∃ c C eps0,
+    0 < c ∧
+      c ≤ C ∧
+        0 < eps0 ∧
+          eps0 < Real.exp (-1) ∧
+            ∀ (eps : ℝ),
+              0 < eps →
+                eps < eps0 →
+                  ENNReal.ofReal c * O77.Residual.powerLogZero lam k eps ≤ V eps ∧
+                    V eps ≤ ENNReal.ofReal C * O77.Residual.powerLogZero lam k eps
+def O77.Residual.powerLogZero : ℝ → ℕ → ℝ → ENNReal :=
+fun lam k eps => ENNReal.ofReal (O77.Residual.powerLogZeroReal lam k eps)
+def O77.Residual.powerLogZeroReal : ℝ → ℕ → ℝ → ℝ :=
+fun lam k eps => eps ^ lam * Real.log (1 / eps) ^ k
+def O77.Native.entryMeasure : (I O H : ℕ) → MeasureTheory.Measure (O77.Native.Parameters I O H) :=
+fun I O H => (O77.Residual.matrixLebesgue (Fin H) (Fin I)).prod (O77.Residual.matrixLebesgue (Fin O) (Fin H))
+def O77.Residual.matrixLebesgue.{u_1, u_2} : (p : Type u_1) →
+  (h : Type u_2) → [Fintype p] → [Fintype h] → MeasureTheory.Measure (Matrix p h ℝ) :=
+fun p h [Fintype p] [Fintype h] => MeasureTheory.Measure.pi fun x => O77.Residual.coordinateLebesgue h
+def O77.Residual.coordinateLebesgue.{u_1} : (ι : Type u_1) → [Fintype ι] → MeasureTheory.Measure (ι → ℝ) :=
+fun ι [Fintype ι] => MeasureTheory.Measure.pi fun x => MeasureTheory.volume
+def O77.Native.ambientSq : {I O H : ℕ} → O77.Native.Parameters I O H → ℝ :=
+fun {I O H} w => O77.Residual.frobeniusSq w.1 + O77.Residual.frobeniusSq w.2
+def O77.Native.entryNorm : {I O H : ℕ} → O77.Native.Parameters I O H → ℝ :=
+fun {I O H} w => √(O77.Native.ambientSq w)
+def O77.Native.entryBall : {I O H : ℕ} → O77.Native.Parameters I O H → ℝ → Set (O77.Native.Parameters I O H) :=
+fun {I O H} w R => {v | O77.Native.entryNorm (v - w) < R}
+def O77.Native.loss : {I O H : ℕ} → O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ :=
+fun {I O H} Phi w => O77.Residual.frobeniusSq (w.2 * w.1 - Phi) / 2
+def O77.Native.bandSet : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ → ℝ → Set (O77.Native.Parameters I O H) :=
+fun {I O H} Phi w R eps => {v | v ∈ O77.Native.entryBall w R ∧ |O77.Native.loss Phi v - O77.Native.loss Phi w| < eps}
+def O77.Native.bandVolume : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ → ℝ → ENNReal :=
+fun {I O H} Phi w R eps => (O77.Native.entryMeasure I O H) (O77.Native.bandSet Phi w R eps)
+structure O77.RungGeometry0906.SingularData (I O r : ℕ) : Type
+number of parameters: 3
+fields:
+  O77.RungGeometry0906.SingularData.sigma : Fin r → ℝ
+  O77.RungGeometry0906.SingularData.sigma_pos : ∀ (j : Fin r), 0 < self.sigma j
+  O77.RungGeometry0906.SingularData.decreasing : StrictAnti self.sigma
+  O77.RungGeometry0906.SingularData.u : Fin r → Fin O → ℝ
+  O77.RungGeometry0906.SingularData.v : Fin r → Fin I → ℝ
+  O77.RungGeometry0906.SingularData.orth_u : ∀ (i j : Fin r), self.u i ⬝ᵥ self.u j = if i = j then 1 else 0
+  O77.RungGeometry0906.SingularData.orth_v : ∀ (i j : Fin r), self.v i ⬝ᵥ self.v j = if i = j then 1 else 0
+constructor:
+  O77.RungGeometry0906.SingularData.mk {I O r : ℕ} (sigma : Fin r → ℝ) (sigma_pos : ∀ (j : Fin r), 0 < sigma j)
+    (decreasing : StrictAnti sigma) (u : Fin r → Fin O → ℝ) (v : Fin r → Fin I → ℝ)
+    (orth_u : ∀ (i j : Fin r), u i ⬝ᵥ u j = if i = j then 1 else 0)
+    (orth_v : ∀ (i j : Fin r), v i ⬝ᵥ v j = if i = j then 1 else 0) : O77.RungGeometry0906.SingularData I O r
+def O77.RungGeometry0906.SingularData.OnRung : {I O r : ℕ} →
+  O77.RungGeometry0906.SingularData I O r → {H : ℕ} → ℕ → O77.Native.Parameters I O H → Prop :=
+fun {I O r} D {H} k w =>
+  w.2 * w.1 = D.prefix k ∧
+    ∀ (j : Fin r), k ≤ ↑j → Matrix.mulVec w.1 (D.v j) = 0 ∧ (Matrix.transpose w.2).mulVec (D.u j) = 0
+def O77.External.RealWishartEigenvalueFormula : Prop :=
+∀ (k d : ℕ), k ≤ d → O77.Residual.ConcreteRealWishartEigenvalueFormula k d
+def O77.Residual.ConcreteRealWishartEigenvalueFormula : ℕ → ℕ → Prop :=
+fun k d => ∃ C, O77.Residual.HasConcreteRealWishartFormula k d C
+def O77.Residual.HasConcreteRealWishartFormula : ℕ → ℕ → ENNReal → Prop :=
+fun k d C =>
+  k ≤ d ∧
+    0 < C ∧
+      C < ⊤ ∧
+        ∀ (rho T : ℝ),
+          0 ≤ rho →
+            0 ≤ T →
+              O77.Residual.leftGramLaplaceLIntegral k d rho T =
+                  C * O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T ∧
+                O77.Residual.rightGramLaplaceLIntegral d k rho T =
+                  C * O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T
+O77.GramPushforward.gaussianGramLIntegral_eq_gramMass_mul_cone : ∀ (k d : ℕ),
+  k ≤ d →
+    ∀ (F : Matrix (Fin k) (Fin k) ℝ → ENNReal),
+      Measurable F →
+        O77.GramBorder.gaussianGramLIntegral k d F =
+          ENNReal.ofReal (O77.GramBorder.gramMass k d) * O77.GramBorder.coneLIntegral k d F
+O77.answersO77_of_cone_eigenvalues : O77.GramWishart.HigherRankConeEigenvalueFormula →
+  ∀ {I O H : ℕ} (Phi : Matrix (Fin O) (Fin I) ℝ), 0 < I → 0 < O → Phi.rank < H → O77.AnswersO77 Phi
+def O77.GramWishart.HigherRankConeEigenvalueFormula : Prop :=
+∀ (k d : ℕ),
+  2 ≤ k →
+    k ≤ d →
+      ∃ D,
+        0 < D ∧
+          D < ⊤ ∧
+            ∀ (rho T : ℝ),
+              0 ≤ rho →
+                0 ≤ T →
+                  O77.GramBorder.coneLIntegral k d (O77.GramBorder.determinantTest rho T) =
+                    D * O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T
+O77.GlobalSpectralIntegral.cone_eq_spectralConstant_mul_laguerre : ∀ (k d : ℕ) (rho T : ℝ),
+  0 ≤ T →
+    O77.GramBorder.coneLIntegral k d (O77.GramBorder.determinantTest rho T) =
+      O77.GlobalSpectralIntegral.spectralConstant k *
+        O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T
+O77.GlobalSpectralIntegral.realWishartEigenvalueFormula : O77.External.RealWishartEigenvalueFormula
+@O77.answersO77 : ∀ {I O H : ℕ} (Phi : Matrix (Fin O) (Fin I) ℝ), 0 < I → 0 < O → Phi.rank < H → O77.AnswersO77 Phi
+ExactFitTarget.lean:43995:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`

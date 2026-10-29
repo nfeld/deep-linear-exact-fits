@@ -1,0 +1,21 @@
+Receipt of a local check of the exact-fit classification (single-file extraction)
+UTC: 2026-10-28T22:44:39Z
+Input file: ExactFitFull_2026_10_28_UTC.lean
+Input SHA-256: b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c
+Theorem: MAIS.ExactFitStatement.exact_fit_classification
+Container engine: podman version 4.9.3
+Container image ID: e455eb37f5bf78d8c8a6d3b9e39d53b055adb2cee6559b4a4c748682882664fe
+Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)
+Mathlib HEAD: 664cbbe52927ce6acaa39ca35498336116e123b8
+Scan: SCAN RESULT: 0 forbidden construct(s) or character(s) found.
+Build of the module (includes the #guard_msgs axiom check): Build exit status: 0
+Kernel replay, leanchecker: Kernel replay exit status: 0
+Axioms printed by the audit: 'MAIS.ExactFitStatement.exact_fit_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+Fingerprint of the definitional closure: match with reference 34e2fa7f3635b4f82eb985509eb7abad5e820413bc0eb34cd06241be172169d6
+SHA-256 of the logs:
+0d731ec257e95ceec9e8b58714dfcbe99b786a7283d2babcaa673cb56f6eee83  scan-20261028T224332Z-LIoRLy.log
+63f069d98a885342d2e8e5d5b62f1d456276e9f8e9bef3c99b6b960c83bc3f4f  recheck-20261028T224335Z-QtKQwt.log
+99e55f3ecd86fb899ea1e3f784844e17673c5c09a78c0fee366ea53a86e21683  audit-20261028T224431Z-nqWLmN.log
+34e2fa7f3635b4f82eb985509eb7abad5e820413bc0eb34cd06241be172169d6  audit-20261028T224431Z-nqWLmN.fingerprint.txt
+This receipt records what was run and what it printed. It does not certify that
+the statement expresses the intended mathematics; see CERTIFICATE.md.

@@ -1,0 +1,13 @@
+Scan of ExactFitFull_2026_10_28_UTC.lean (SHA-256 b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c, 63475 lines)
+Forbidden constructs (outside comments and strings):
+  none
+Reported constructs:
+  imports: ['Mathlib']
+  opaque declaration: 0
+  partial declaration: 0
+  local/scoped notation: 22 (first at line 23436)
+  #guard_msgs: 795 (first at line 408)
+  global attribute command: 2 (first at line 1625)
+  set_option: autoImplicit x362, backward.isDefEq.respectTransparency x189, linter.style.haveILetI x2, maxHeartbeats x172, maxRecDepth x1
+  non-ASCII characters by first word of their Unicode name: DOUBLE-STRUCK x9614, GREEK x4402, MATHEMATICAL x4208, LESS-THAN x3099, RIGHTWARDS x3013, MIDDLE x1681, FOR x1586, LOGICAL x1514, ELEMENT x1037, SUPERSCRIPT x1008, DOUBLE x970, MULTIPLICATION x695, N-ARY x666, LEFTWARDS x568, NOT x558, BULLET x425, THERE x419, SUBSCRIPT x417, INTEGRAL x391, INFINITY x308, LEFT x291, GREATER-THAN x283, PARTIAL x277, LATIN x248, ASYMPTOTICALLY x222, MODIFIER x213, SUBSET x136, CIRCLED x133, INTERSECTION x114, UPWARDS x99, DOWN x62, BLACK x38, RIGHT x31, RING x31, LEFT-POINTING x12, RIGHT-POINTING x12, UNION x11, EMPTY x6, BIG x4, SQUARE x4, SINGLE x4, MINUS x2, DOWNWARDS x2, MIDLINE x2, UP x1, MUCH x1, DIVIDES x1, HORIZONTAL x1, VULGAR x1
+SCAN RESULT: 0 forbidden construct(s) or character(s) found.

@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-28T23:18:10.773083+00:00",
+  "command": "python3 -I exact-fit-local/tools/scan_lean_source.py ExactFitFull_2026_10_28_UTC.lean",
+  "exit_code": 0,
+  "source_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+  "scanner_sha256": "4c3bbcb666f2dfeeca8cd4ef00c431a819df6ddb946b2dbdc932ff7a6ea6fe2b",
+  "log_sha256": "1cd6de6efb261fa083a643b7b071fc054a20589f686b84711b417de749254424",
+  "scope": "A new source scan only; does not repair or replace the earlier author receipt."
+}

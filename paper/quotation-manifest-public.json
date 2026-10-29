@@ -1,0 +1,207 @@
+{
+  "proof_file": "ExactFitFull_2026_10_28_UTC.lean",
+  "proof_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+  "mathlib_commit": "664cbbe52927ce6acaa39ca35498336116e123b8",
+  "blocks": [
+    {
+      "block": 1,
+      "source_kind": "mathlib",
+      "source_path": "Mathlib/Analysis/Matrix/Normed.lean",
+      "line_start": 561,
+      "line_end": 563,
+      "file_sha256": "e430f9176d3609cf18d6ae4abdd94a8bd6d30018734a7605b26de369968358ac",
+      "fragment_sha256": "49ad94f0a06ef13d9672b330f2cf0e0607305d6ce495600ff40255bd3bf5774c",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/664cbbe52927ce6acaa39ca35498336116e123b8/Mathlib/Analysis/Matrix/Normed.lean#L561"
+    },
+    {
+      "block": 2,
+      "source_kind": "mathlib",
+      "source_path": "Mathlib/Analysis/Matrix/Normed.lean",
+      "line_start": 681,
+      "line_end": 690,
+      "file_sha256": "e430f9176d3609cf18d6ae4abdd94a8bd6d30018734a7605b26de369968358ac",
+      "fragment_sha256": "417ca0dfde133635f1f7830e739c6081b6bd581065b65ce297de80b1b819abdd",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/664cbbe52927ce6acaa39ca35498336116e123b8/Mathlib/Analysis/Matrix/Normed.lean#L681"
+    },
+    {
+      "block": 3,
+      "source_kind": "mathlib",
+      "source_path": "Mathlib/Analysis/Normed/Group/Constructions.lean",
+      "line_start": 301,
+      "line_end": 304,
+      "file_sha256": "ab6a98350718fb2c9da8bedde4bf63cac85849ee9d3332b1955c2cb73f03cdec",
+      "fragment_sha256": "46bbbac9ec080f2bca3c532fc11705f0809da100e5d9d82b0c6e8fd753526191",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/664cbbe52927ce6acaa39ca35498336116e123b8/Mathlib/Analysis/Normed/Group/Constructions.lean#L301"
+    },
+    {
+      "block": 4,
+      "source_kind": "mathlib",
+      "source_path": "Mathlib/MeasureTheory/Group/Measure.lean",
+      "line_start": 764,
+      "line_end": 774,
+      "file_sha256": "cba62e69e14aafd9e79c41c3209cc75828e5bd7e3bcf46e5af7d8281e43696bd",
+      "fragment_sha256": "df1fb57da3d99bbae45ae17fd792f78121a8b5ba6088a9af857bee30498e5d17",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/664cbbe52927ce6acaa39ca35498336116e123b8/Mathlib/MeasureTheory/Group/Measure.lean#L764"
+    },
+    {
+      "block": 5,
+      "source_kind": "mathlib",
+      "source_path": "Mathlib/MeasureTheory/Measure/WithDensity.lean",
+      "line_start": 36,
+      "line_end": 41,
+      "file_sha256": "975237c8f778f104a35c32f401bd10a55e8ed2d4a34fc6def2d0257f70b277ae",
+      "fragment_sha256": "a141bee3c28f35008b0ff0cdcf0d384cc4e9488e102a85fcd1391744f0974fbd",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/664cbbe52927ce6acaa39ca35498336116e123b8/Mathlib/MeasureTheory/Measure/WithDensity.lean#L36"
+    },
+    {
+      "block": 6,
+      "source_kind": "mathlib",
+      "source_path": "Mathlib/Topology/MetricSpace/HausdorffDimension.lean",
+      "line_start": 96,
+      "line_end": 98,
+      "file_sha256": "d525b021e2f4c0b48b68aad59c7417ae843140cfcbc6e2e8db0444634ee5c9c6",
+      "fragment_sha256": "98fccf41a96925ebb38785be34359fcde2f331eaea16e374290970737eb0432c",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/664cbbe52927ce6acaa39ca35498336116e123b8/Mathlib/Topology/MetricSpace/HausdorffDimension.lean#L96"
+    },
+    {
+      "block": 7,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 63365,
+      "line_end": 63396,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "7edde2e6dd0fb0bb5e967fa1e70cf91ebcf8607348595dd1041eb0d6c7447bee",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L63365"
+    },
+    {
+      "block": 8,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 788,
+      "line_end": 789,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "049ee5cfa10f0514f7c29af54503febff9afc90638a4cecc06e8ad58d50c5589",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L788"
+    },
+    {
+      "block": 9,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 4551,
+      "line_end": 4566,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "7aae7f1921df52edae5bdded6696214ec2802556770cab1a41c68c9b22e43062",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L4551"
+    },
+    {
+      "block": 10,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 56724,
+      "line_end": 56725,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "94fb736df9712c8796b90565afa003172cc0833dc563bd432283d7dd664c0561",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L56724"
+    },
+    {
+      "block": 11,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 63398,
+      "line_end": 63427,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "77aab7a7645b1cf32ea4495b86f294d3a0180db07e0c9bf9268c962dc1f34ea6",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L63398"
+    },
+    {
+      "block": 12,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 63297,
+      "line_end": 63311,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "ebe9e6de427a25b3d6a04cb5ad157b95942646fa39f8612befcfa2b4f1735bc8",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L63297"
+    },
+    {
+      "block": 13,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 5560,
+      "line_end": 5604,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "f4b0e45904c18750ea259ac1878f7617950d5e25b1f9fb2829df4e0b8d04f8dc",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L5560"
+    },
+    {
+      "block": 14,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 307,
+      "line_end": 345,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "7b5821c7d0c53b8065d7e224eff37a6212a5550ca27aa99b9e9c63970b731bbf",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L307"
+    },
+    {
+      "block": 15,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 5478,
+      "line_end": 5493,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "b75b7cd86f92e960cdc24f245be5301d707c0ef9b70ea1a87f437348ced1e36d",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L5478"
+    },
+    {
+      "block": 16,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 5328,
+      "line_end": 5375,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "31446a619c4ef0a1e20f9af3d745ec09199c2bb00beb53f8ac05483def4e7ccb",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L5328"
+    },
+    {
+      "block": 17,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 4817,
+      "line_end": 4825,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "c44d8afd003c1cbf007cefc946fe6d87fb3009bd14ec46f6cde2afdd40f738c5",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L4817"
+    },
+    {
+      "block": 18,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 5009,
+      "line_end": 5017,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "2fc817af04e7c681abe414d317ff495b7c17acf02858c9115392e6cf1150539d",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L5009"
+    },
+    {
+      "block": 19,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 5384,
+      "line_end": 5415,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "760ce5db36e0ec33ee1b037019ccc54e5dba8f29b3b9cc063a535b0b0b67a1c2",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L5384"
+    },
+    {
+      "block": 20,
+      "source_kind": "project",
+      "source_path": "ExactFitFull_2026_10_28_UTC.lean",
+      "line_start": 5226,
+      "line_end": 5232,
+      "file_sha256": "b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c",
+      "fragment_sha256": "66c83cae05f218e184029e9fef97c15c52c864e54e4f732a3f92152594f91927",
+      "source_url": "https://github.com/nfeld/deep-linear-exact-fits/blob/main/ExactFitFull_2026_10_28_UTC.lean#L5226"
+    }
+  ]
+}

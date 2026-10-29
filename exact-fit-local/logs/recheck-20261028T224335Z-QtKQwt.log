@@ -1,0 +1,330 @@
+UTC: 2026-10-28T22:43:35Z
+Action: recheck
+Input basename: ExactFitFull_2026_10_28_UTC.lean
+Host source SHA-256: b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c
+FRESH: 0
+podman version 4.9.3
+Container image ID: e455eb37f5bf78d8c8a6d3b9e39d53b055adb2cee6559b4a4c748682882664fe
+Harness scripts/configuration hashes:
+5211593aea8f22148218770abed869694a974efc8d54eebb26fb6ba2bad7cc9b  exactfit.sh
+57bd0f74f003c978f07c7eb1ce93d522ff3cd578381ce203ba9d061a69189d9a  Containerfile
+05929010494b79fca9b826af53ccb2eac764658d2104d8933563400597f56000  project/lakefile.toml
+8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88  project/lean-toolchain
+8070502369f5d1be9f56671576f42337b2daa9858cbc7c1b28a8b84743f473b2  scripts/common.sh
+e97dee60aa4e9cfd2dfd44441aedf5a67c7b6b320b9b7d966516522b2356afc3  scripts/in-container-audit.sh
+12b0cee983ab686134eebf0545f0fb2e4f7d861c805cc72d6e40d07271233550  scripts/in-container-doctor.sh
+ea7e44119482c05270cf4f417805337ba429d7e0c9427651967421cdf4e54161  scripts/in-container-recheck.sh
+753c4203a998728ed050ca0899799a4075af736e1ea95445084436330b0ae59c  scripts/in-container-setup.sh
+d80f5d9a4eda8ed010fce7d9df60ad29047e2fe10c2f9386465dadb4a78b644f  scripts/in-container-verify.sh
+c9ec8599321e4d48407bc0df7141e8bc6b167d93ac21f3767828c14fd8c85dba  tools/Fingerprint.body.lean
+e58bf4b624624198e7c8be00735904a3651d0d3b99a2054bbe65463ebbacf097  tools/scan_lean_source.py
+UTC: 2026-10-28T22:43:35Z
+Toolchain pin: leanprover/lean4:v4.34.0-rc2
+Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)
+Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)
+Mathlib HEAD: 664cbbe52927ce6acaa39ca35498336116e123b8
+Mathlib's compiled files are shared with another project of this volume (hard links: 2).
+Configuration / resolved manifest hashes:
+8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88  lean-toolchain
+05929010494b79fca9b826af53ccb2eac764658d2104d8933563400597f56000  lakefile.toml
+f3e18b39851f8a885ac58ce4d1c7b89b3ea7f8a947018b95b7e55dbd11f339b4  lake-manifest.json
+Resolved dependency manifest (JSON):
+{"version": "1.2.0",
+ "packagesDir": ".lake/packages",
+ "packages":
+ [{"url": "https://github.com/leanprover-community/mathlib4",
+   "type": "git",
+   "subDir": null,
+   "scope": "",
+   "rev": "664cbbe52927ce6acaa39ca35498336116e123b8",
+   "name": "mathlib",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "664cbbe52927ce6acaa39ca35498336116e123b8",
+   "inherited": false,
+   "configFile": "lakefile.lean"},
+  {"url": "https://github.com/leanprover-community/plausible",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "d9598f07b1bc701f1e3aae163d2681c1fd978793",
+   "name": "plausible",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": true,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/LeanSearchClient",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "ba67e212be1197b84c1f1f6299488a10a3002713",
+   "name": "LeanSearchClient",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": true,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/import-graph",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "d8823026ac7ef130c253089d95685f9877b95323",
+   "name": "importGraph",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": true,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/ProofWidgets4",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "a8acbfd87375ff4abe14ce09db5b7664d383bc7f",
+   "name": "proofwidgets",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": true,
+   "configFile": "lakefile.lean"},
+  {"url": "https://github.com/leanprover-community/aesop",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "18889deb9e83ea7420ef51c160d6f88552e744e3",
+   "name": "aesop",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "master",
+   "inherited": true,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/quote4",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "507746ab8f4b643ccdacb2ec4cdb5853fa9f8ab3",
+   "name": "Qq",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "master",
+   "inherited": true,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/batteries",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "7e23602c91bc04586b2b06de2708a041853e4681",
+   "name": "batteries",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": true,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover/lean4-cli",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover",
+   "rev": "ab3a82db9fea14cf0fd7f5a2de650f4b534640af",
+   "name": "Cli",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "v4.34.0-rc2",
+   "inherited": true,
+   "configFile": "lakefile.toml"}],
+ "name": "exactfitcheck",
+ "lakeDir": ".lake",
+ "fixedToolchain": false}
+
+SHA-256 of the exact copied source:
+b362a3ee35df68adad7aa24a1ddd288e63e4e59d074445aaafef4093e8462a2c  ExactFitTarget.lean
+==> lake build ExactFitTarget
+⚠ [8848/8849] Replayed ExactFitTarget
+info: ExactFitTarget.lean:2261:0: 'MAIS.PermutationRankOrder.first_difference_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2262:0: 'MAIS.PermutationRankOrder.minimal_index_slack' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2263:0: 'MAIS.PermutationRankOrder.swap_rectangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2265:0: 'MAIS.PermutationRankOrder.swap_rank_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2266:0: 'MAIS.PermutationRankOrder.minimal_swap_preserves_rank' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2267:0: 'MAIS.PermutationRankOrder.exists_minimal_swap_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2269:0: 'MAIS.PermutationRankOrder.finite_permutation_minimal_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2271:0: 'MAIS.PermutationRankOrder.liftPermutation_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2280:0: 'MAIS.PermutationRankOrder.rankWeight_swap_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExactFitTarget.lean:2281:0: 'MAIS.PermutationRankOrder.exists_first_difference' depends on axioms: [propext, Quot.sound]
+info: ExactFitTarget.lean:35223:0: O77.answersO77_of_wishart : O77.External.RealWishartEigenvalueFormula →
+  ∀ {I O H : ℕ} (Phi : O77.Reconstruction0905.RM O I), 0 < I → 0 < O → Matrix.rank Phi < H → O77.AnswersO77 Phi
+info: ExactFitTarget.lean:35224:0: def O77.AnswersO77 : {I O : ℕ} → {H : ℕ} → O77.Reconstruction0905.RM O I → Prop :=
+fun {I O H} Phi =>
+  (∀ (w : O77.Native.Parameters I O H),
+      w.2 * w.1 = Phi →
+        O77.RankData I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2) ∧
+          0 < ↑(O77.candidateTwiceLambda I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2)) / 2 ∧
+            ∀ (lam : ℝ) (m : ℕ),
+              O77.Native.HasLocalBandPair Phi w lam m ↔
+                lam = ↑(O77.candidateTwiceLambda I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2)) / 2 ∧
+                  m = O77.candidateMultiplicity I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2)) ∧
+    (∀ (a b : ℕ),
+        O77.RankData I O H (Matrix.rank Phi) a b ↔ ∃ w, w.2 * w.1 = Phi ∧ Matrix.rank w.1 = a ∧ Matrix.rank w.2 = b) ∧
+      (∀ (w : O77.Native.Parameters I O H),
+          w.2 * w.1 = Phi →
+            (O77.Native.IsThresholdMinimizer Phi w ↔
+              O77.MinimumRankCondition I O H (Matrix.rank Phi) (Matrix.rank w.1) (Matrix.rank w.2))) ∧
+        IsLeast {lam | ∃ w, w.2 * w.1 = Phi ∧ ∃ m, O77.Native.HasLocalBandPair Phi w lam m}
+            (O77.Native.globalThresholdFormula I O H (Matrix.rank Phi)) ∧
+          IsGreatest {m | ∃ w, O77.Native.IsThresholdMinimizer Phi w ∧ ∃ lam, O77.Native.HasLocalBandPair Phi w lam m}
+              (if
+                  (I + O + H + Matrix.rank Phi) % 2 = 1 ∧
+                    O + Matrix.rank Phi ≤ I + H ∧ I + Matrix.rank Phi ≤ O + H ∧ H + Matrix.rank Phi ≤ I + O then
+                2
+              else 1) ∧
+            ∀ (D : O77.RungGeometry0906.SingularData I O (Matrix.rank Phi)),
+              D.target = Phi →
+                (∀ k ≤ Matrix.rank Phi, ∃ w, D.OnRung k w) ∧
+                  ∀ k < Matrix.rank Phi,
+                    ∀ (w : O77.Native.Parameters I O H), D.OnRung k w → O77.Native.HasLocalBandPair Phi w 1 1
+info: ExactFitTarget.lean:35225:0: def O77.Native.IsThresholdMinimizer : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → Prop :=
+fun {I O H} Phi w =>
+  w.2 * w.1 = Phi ∧
+    ∃ lam m,
+      O77.Native.HasLocalBandPair Phi w lam m ∧
+        ∀ (z : O77.Native.Parameters I O H),
+          z.2 * z.1 = Phi → ∀ (mu : ℝ) (n : ℕ), O77.Native.HasLocalBandPair Phi z mu n → lam ≤ mu
+info: ExactFitTarget.lean:35226:0: def O77.candidateTwiceLambda : ℕ → ℕ → ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun I O H r a b => O77.regularDim I O a b + O77.residualMin (O - b) (I - a) (O77.residualHidden H r a b)
+info: ExactFitTarget.lean:35227:0: def O77.candidateMultiplicity : ℕ → ℕ → ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun I O H r a b => O77.residualMultiplicity (O - b) (I - a) (O77.residualHidden H r a b)
+info: ExactFitTarget.lean:35228:0: def O77.regularDim : ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun I O a b => O * a + b * (I - a)
+info: ExactFitTarget.lean:35229:0: def O77.residualHidden : ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun H r a b => H + r - (a + b)
+info: ExactFitTarget.lean:35230:0: def O77.residualCost : ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun p q h t => (h - t) * (q - t) + p * t
+info: ExactFitTarget.lean:35231:0: def O77.residualMin : ℕ → ℕ → ℕ → ℕ :=
+fun p q h => (O77.Arithmetic.minimumUpTo (O77.residualQuadratic p q h) (min h q)).toNat
+info: ExactFitTarget.lean:35232:0: def O77.residualMinimizerList : ℕ → ℕ → ℕ → List ℕ :=
+fun p q h => O77.Arithmetic.minimizerList (O77.residualQuadratic p q h) (min h q)
+info: ExactFitTarget.lean:35233:0: def O77.residualMultiplicity : ℕ → ℕ → ℕ → ℕ :=
+fun p q h => (O77.residualMinimizerList p q h).length
+info: ExactFitTarget.lean:35234:0: def O77.Native.HasLocalBandPair : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ → ℕ → Prop :=
+fun {I O H} Phi w lam m => O77.Transport0906.RadiusOrder (O77.Native.bandVolume Phi w) lam m
+info: ExactFitTarget.lean:35235:0: def O77.Transport0906.RadiusOrder : (ℝ → ℝ → ENNReal) → ℝ → ℕ → Prop :=
+fun V lam m =>
+  0 ≤ lam ∧
+    1 ≤ m ∧
+      ∃ rho, 0 < rho ∧ ∀ (delta : ℝ), 0 < delta → delta < rho → O77.Residual.EThetaZeroPowerLog (V delta) lam (m - 1)
+info: ExactFitTarget.lean:35236:0: def O77.Residual.EThetaZeroPowerLog : (ℝ → ENNReal) → ℝ → ℕ → Prop :=
+fun V lam k =>
+  ∃ c C eps0,
+    0 < c ∧
+      c ≤ C ∧
+        0 < eps0 ∧
+          eps0 < Real.exp (-1) ∧
+            ∀ (eps : ℝ),
+              0 < eps →
+                eps < eps0 →
+                  ENNReal.ofReal c * O77.Residual.powerLogZero lam k eps ≤ V eps ∧
+                    V eps ≤ ENNReal.ofReal C * O77.Residual.powerLogZero lam k eps
+info: ExactFitTarget.lean:35237:0: def O77.Residual.powerLogZero : ℝ → ℕ → ℝ → ENNReal :=
+fun lam k eps => ENNReal.ofReal (O77.Residual.powerLogZeroReal lam k eps)
+info: ExactFitTarget.lean:35238:0: def O77.Residual.powerLogZeroReal : ℝ → ℕ → ℝ → ℝ :=
+fun lam k eps => eps ^ lam * Real.log (1 / eps) ^ k
+info: ExactFitTarget.lean:35239:0: def O77.Native.entryMeasure : (I O H : ℕ) → MeasureTheory.Measure (O77.Native.Parameters I O H) :=
+fun I O H => (O77.Residual.matrixLebesgue (Fin H) (Fin I)).prod (O77.Residual.matrixLebesgue (Fin O) (Fin H))
+info: ExactFitTarget.lean:35240:0: def O77.Residual.matrixLebesgue.{u_1, u_2} : (p : Type u_1) →
+  (h : Type u_2) → [Fintype p] → [Fintype h] → MeasureTheory.Measure (Matrix p h ℝ) :=
+fun p h [Fintype p] [Fintype h] => MeasureTheory.Measure.pi fun x => O77.Residual.coordinateLebesgue h
+info: ExactFitTarget.lean:35241:0: def O77.Residual.coordinateLebesgue.{u_1} : (ι : Type u_1) → [Fintype ι] → MeasureTheory.Measure (ι → ℝ) :=
+fun ι [Fintype ι] => MeasureTheory.Measure.pi fun x => MeasureTheory.volume
+info: ExactFitTarget.lean:35242:0: def O77.Native.ambientSq : {I O H : ℕ} → O77.Native.Parameters I O H → ℝ :=
+fun {I O H} w => O77.Residual.frobeniusSq w.1 + O77.Residual.frobeniusSq w.2
+info: ExactFitTarget.lean:35243:0: def O77.Native.entryNorm : {I O H : ℕ} → O77.Native.Parameters I O H → ℝ :=
+fun {I O H} w => √(O77.Native.ambientSq w)
+info: ExactFitTarget.lean:35244:0: def O77.Native.entryBall : {I O H : ℕ} → O77.Native.Parameters I O H → ℝ → Set (O77.Native.Parameters I O H) :=
+fun {I O H} w R => {v | O77.Native.entryNorm (v - w) < R}
+info: ExactFitTarget.lean:35245:0: def O77.Native.loss : {I O H : ℕ} → O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ :=
+fun {I O H} Phi w => O77.Residual.frobeniusSq (w.2 * w.1 - Phi) / 2
+info: ExactFitTarget.lean:35246:0: def O77.Native.bandSet : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ → ℝ → Set (O77.Native.Parameters I O H) :=
+fun {I O H} Phi w R eps => {v | v ∈ O77.Native.entryBall w R ∧ |O77.Native.loss Phi v - O77.Native.loss Phi w| < eps}
+info: ExactFitTarget.lean:35247:0: def O77.Native.bandVolume : {I O H : ℕ} →
+  O77.Reconstruction0905.RM O I → O77.Native.Parameters I O H → ℝ → ℝ → ENNReal :=
+fun {I O H} Phi w R eps => (O77.Native.entryMeasure I O H) (O77.Native.bandSet Phi w R eps)
+info: ExactFitTarget.lean:35248:0: structure O77.RungGeometry0906.SingularData (I O r : ℕ) : Type
+number of parameters: 3
+fields:
+  O77.RungGeometry0906.SingularData.sigma : Fin r → ℝ
+  O77.RungGeometry0906.SingularData.sigma_pos : ∀ (j : Fin r), 0 < self.sigma j
+  O77.RungGeometry0906.SingularData.decreasing : StrictAnti self.sigma
+  O77.RungGeometry0906.SingularData.u : Fin r → Fin O → ℝ
+  O77.RungGeometry0906.SingularData.v : Fin r → Fin I → ℝ
+  O77.RungGeometry0906.SingularData.orth_u : ∀ (i j : Fin r), self.u i ⬝ᵥ self.u j = if i = j then 1 else 0
+  O77.RungGeometry0906.SingularData.orth_v : ∀ (i j : Fin r), self.v i ⬝ᵥ self.v j = if i = j then 1 else 0
+constructor:
+  O77.RungGeometry0906.SingularData.mk {I O r : ℕ} (sigma : Fin r → ℝ) (sigma_pos : ∀ (j : Fin r), 0 < sigma j)
+    (decreasing : StrictAnti sigma) (u : Fin r → Fin O → ℝ) (v : Fin r → Fin I → ℝ)
+    (orth_u : ∀ (i j : Fin r), u i ⬝ᵥ u j = if i = j then 1 else 0)
+    (orth_v : ∀ (i j : Fin r), v i ⬝ᵥ v j = if i = j then 1 else 0) : O77.RungGeometry0906.SingularData I O r
+info: ExactFitTarget.lean:35249:0: def O77.RungGeometry0906.SingularData.OnRung : {I O r : ℕ} →
+  O77.RungGeometry0906.SingularData I O r → {H : ℕ} → ℕ → O77.Native.Parameters I O H → Prop :=
+fun {I O r} D {H} k w =>
+  w.2 * w.1 = D.prefix k ∧
+    ∀ (j : Fin r), k ≤ ↑j → Matrix.mulVec w.1 (D.v j) = 0 ∧ (Matrix.transpose w.2).mulVec (D.u j) = 0
+info: ExactFitTarget.lean:35250:0: def O77.External.RealWishartEigenvalueFormula : Prop :=
+∀ (k d : ℕ), k ≤ d → O77.Residual.ConcreteRealWishartEigenvalueFormula k d
+info: ExactFitTarget.lean:35251:0: def O77.Residual.ConcreteRealWishartEigenvalueFormula : ℕ → ℕ → Prop :=
+fun k d => ∃ C, O77.Residual.HasConcreteRealWishartFormula k d C
+info: ExactFitTarget.lean:35252:0: def O77.Residual.HasConcreteRealWishartFormula : ℕ → ℕ → ENNReal → Prop :=
+fun k d C =>
+  k ≤ d ∧
+    0 < C ∧
+      C < ⊤ ∧
+        ∀ (rho T : ℝ),
+          0 ≤ rho →
+            0 ≤ T →
+              O77.Residual.leftGramLaplaceLIntegral k d rho T =
+                  C * O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T ∧
+                O77.Residual.rightGramLaplaceLIntegral d k rho T =
+                  C * O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T
+info: ExactFitTarget.lean:35280:0: O77.GramPushforward.gaussianGramLIntegral_eq_gramMass_mul_cone : ∀ (k d : ℕ),
+  k ≤ d →
+    ∀ (F : Matrix (Fin k) (Fin k) ℝ → ENNReal),
+      Measurable F →
+        O77.GramBorder.gaussianGramLIntegral k d F =
+          ENNReal.ofReal (O77.GramBorder.gramMass k d) * O77.GramBorder.coneLIntegral k d F
+info: ExactFitTarget.lean:35281:0: O77.answersO77_of_cone_eigenvalues : O77.GramWishart.HigherRankConeEigenvalueFormula →
+  ∀ {I O H : ℕ} (Phi : Matrix (Fin O) (Fin I) ℝ), 0 < I → 0 < O → Phi.rank < H → O77.AnswersO77 Phi
+info: ExactFitTarget.lean:35282:0: def O77.GramWishart.HigherRankConeEigenvalueFormula : Prop :=
+∀ (k d : ℕ),
+  2 ≤ k →
+    k ≤ d →
+      ∃ D,
+        0 < D ∧
+          D < ⊤ ∧
+            ∀ (rho T : ℝ),
+              0 ≤ rho →
+                0 ≤ T →
+                  O77.GramBorder.coneLIntegral k d (O77.GramBorder.determinantTest rho T) =
+                    D * O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T
+info: ExactFitTarget.lean:35315:0: O77.GlobalSpectralIntegral.cone_eq_spectralConstant_mul_laguerre : ∀ (k d : ℕ) (rho T : ℝ),
+  0 ≤ T →
+    O77.GramBorder.coneLIntegral k d (O77.GramBorder.determinantTest rho T) =
+      O77.GlobalSpectralIntegral.spectralConstant k *
+        O77.Residual.laguerreOrthantLIntegral k (O77.Residual.wishartEta k d) rho T
+info: ExactFitTarget.lean:35316:0: O77.GlobalSpectralIntegral.realWishartEigenvalueFormula : O77.External.RealWishartEigenvalueFormula
+info: ExactFitTarget.lean:35317:0: @O77.answersO77 : ∀ {I O H : ℕ} (Phi : Matrix (Fin O) (Fin I) ℝ), 0 < I → 0 < O → Phi.rank < H → O77.AnswersO77 Phi
+warning: ExactFitTarget.lean:43995:84: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Build completed successfully (8849 jobs).
+Build exit status: 0
+
+real	0m3.999s
+user	0m5.850s
+sys	0m1.620s
+==> Kernel replay of every declaration of ExactFitTarget, starting from its imports (Mathlib, core).
+
+real	0m51.399s
+user	0m48.922s
+sys	0m2.376s
+Kernel replay exit status: 0
+KERNEL RE-CHECK PASSED.
+- The build elaborated the whole file, including its final #guard_msgs check that
+  the theorem depends exactly on the axioms [propext, Classical.choice, Quot.sound].
+- leanchecker then replayed, with Lean's kernel, every declaration of the file.
+  Since the file contains the whole project part of the proof, this covers all of it;
+  Mathlib and Lean core are replayed only with FRESH=1.
+- leanchecker reuses Lean's own kernel: it is a second run, not an independent checker.
+- Nothing here says that the statement means what the preprint says it means.
+  That is the translation of Appendix A, which is checked by reading.
+Container/check exit status: 0; log writer exit status: 0

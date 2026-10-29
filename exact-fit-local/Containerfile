@@ -1,0 +1,17 @@
+# Tools only: no proof, manuscript or log enters the image.
+FROM docker.io/library/ubuntu:24.04
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      curl git ca-certificates gzip xz-utils zstd util-linux \
+    && rm -rf /var/lib/apt/lists/*
+RUN userdel -r ubuntu 2>/dev/null || true
+RUN useradd -m -u 1000 -s /bin/bash lean && mkdir -p /work && chown lean:lean /work
+RUN curl -fsSL https://elan.lean-lang.org/elan-init.sh -o /tmp/elan-init.sh \
+    && ELAN_HOME=/opt/elan sh /tmp/elan-init.sh -y --no-modify-path --default-toolchain none \
+    && rm /tmp/elan-init.sh
+ENV PATH="/opt/elan/bin:${PATH}"
+# Toolchains are downloaded during setup into the persistent volume.
+ENV ELAN_HOME="/work/elan"
+USER lean
+WORKDIR /work
+CMD ["/bin/bash"]

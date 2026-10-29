@@ -32,8 +32,8 @@ ea7e44119482c05270cf4f417805337ba429d7e0c9427651967421cdf4e54161  exact-fit-loca
 d80f5d9a4eda8ed010fce7d9df60ad29047e2fe10c2f9386465dadb4a78b644f  exact-fit-local/scripts/in-container-verify.sh
 c9ec8599321e4d48407bc0df7141e8bc6b167d93ac21f3767828c14fd8c85dba  exact-fit-local/tools/Fingerprint.body.lean
 4c3bbcb666f2dfeeca8cd4ef00c431a819df6ddb946b2dbdc932ff7a6ea6fe2b  exact-fit-local/tools/scan_lean_source.py
-ce0d8b8f1761834822453f28c297285987d1fa9d18d73baf1f197e2a7af621bf  paper/README.md
-3d7e9a58f0df40194b949dfa4e796301fa9ee70865b829be368fb1f3578a4ed1  paper/REVISION-NOTES.md
+f184876da6663bf8d43b0874a04d5a5ca649e88e3ec1fe954c65910f8ebd1151  paper/README.md
+f6eacbafa761b671c737e90f52f7d384e19929c06bc6fcf49cedafb083dcadb9  paper/REVISION-NOTES.md
 a819d2dc599297f52dc75b5e22fcb5c9925e0ee07801f6e286fc4e7f230acf0e  paper/deep-linear-exact-fits-2026-10-29_00-19-56_Paris-diff.pdf
 315c1b018fbb0fa00b3ce85273051f304ff42fb751bdf25d232cdffbfb5ec904  paper/deep-linear-exact-fits-2026-10-29_00-19-56_Paris-diff.tex
 96841f49bfe7805fcf533b21464d19045a9248e561e6769f32790580697be301  paper/deep-linear-exact-fits-2026-10-29_00-19-56_Paris.pdf
@@ -42,6 +42,10 @@ f1c9892b0dba093a59b1138285212759f2a056a7fab3c998cb85d92fcb4bf767  paper/deep-lin
 4c9d1395235c55656d2791b0846a84fd13eb1a29878e945689a93b64b637ff81  paper/deep-linear-exact-fits-2026-10-29_13-33-54_Paris-diff-vs-00-19-56.tex
 fda45703709ee46494032f38c084f67fc90184e6d8ed3dfa365ddd3b52e0c211  paper/deep-linear-exact-fits-2026-10-29_13-33-54_Paris.pdf
 f187153c16cec616288e31037a083b13f80e2b2cb6b58e8097b6ee74168ad5f6  paper/deep-linear-exact-fits-2026-10-29_13-33-54_Paris.tex
+f4aed5406c038451c2d8e7a05c6dd893c6421577151cd47101ab6248250f3410  paper/deep-linear-exact-fits-2026-10-29_14-29-39_Paris-diff-vs-13-33-54.pdf
+c3caae674c7428262f88c7a18690739bc5ee67d4a54b336d7c53eaa6b84bdc94  paper/deep-linear-exact-fits-2026-10-29_14-29-39_Paris-diff-vs-13-33-54.tex
+1f3596af1871630d1e27dff31d73b3ddaa696ec24c5ac1c4556320c0d821a190  paper/deep-linear-exact-fits-2026-10-29_14-29-39_Paris.pdf
+15cdaf4fd8025e5971013b68d2641e8fc70b30c052a2ad41f0ad4a03b1804c53  paper/deep-linear-exact-fits-2026-10-29_14-29-39_Paris.tex
 e973756a24c3d65ec00733836d77049dd8e0cc00cd1d74de13883ef67fa3909a  paper/diff-generation.json
 05592774be7d2835a94664c32c31391dfff7287088e56cab93e4b96a621e6c07  paper/diff-quotation-pdf-check.json
 498336d35141e0d966fc6946d6532960aceb7f528fb305a3c6c7b8af39dda6ed  paper/diff-vs-00-19-56-generation.json

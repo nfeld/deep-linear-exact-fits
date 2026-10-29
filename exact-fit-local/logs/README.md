@@ -4,6 +4,13 @@ These files record the author's local run on 28 October 2026. The source hash,
 ordinary replay and fingerprint comparison can be inspected in the recheck and
 audit logs. The receipt is unsigned.
 
+The run used the harness as it was on 28 October; the recheck log lists the
+SHA-256 of each of its files. Two files have changed since then: `exactfit.sh`,
+which now fails when the fingerprint reference is missing or empty instead of
+reporting "not compared", and `tools/scan_lean_source.py`, which now prints the
+source's file name and SHA-256 instead of its full path. The other harness files
+are unchanged.
+
 ## Redaction and receipt integrity
 
 The published scan log `scan-20261028T224332Z-LIoRLy.log` has a redacted input

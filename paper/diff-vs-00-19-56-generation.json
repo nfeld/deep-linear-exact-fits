@@ -1,0 +1,25 @@
+{
+  "tool": "latexdiff 1.3.2, with the DIF preamble of the 00:19:56 comparison (blue additions, red struck-through deletions)",
+  "options": "--encoding=utf8 --config=VERBATIMENV=comment;LeanCode",
+  "baseline": "deep-linear-exact-fits-2026-10-29_00-19-56_Paris.tex",
+  "baseline_sha256": "f1c9892b0dba093a59b1138285212759f2a056a7fab3c998cb85d92fcb4bf767",
+  "revision": "deep-linear-exact-fits-2026-10-29_13-33-54_Paris.tex",
+  "revision_sha256": "f187153c16cec616288e31037a083b13f80e2b2cb6b58e8097b6ee74168ad5f6",
+  "diff_tex": "deep-linear-exact-fits-2026-10-29_13-33-54_Paris-diff-vs-00-19-56.tex",
+  "diff_tex_sha256": "4c9d1395235c55656d2791b0846a84fd13eb1a29878e945689a93b64b637ff81",
+  "diff_pdf": "deep-linear-exact-fits-2026-10-29_13-33-54_Paris-diff-vs-00-19-56.pdf",
+  "diff_pdf_sha256": "3044eee2d8f3314e37e1cebcff9b0cf873bf9a50ce47ae793520cb4a17ee2816",
+  "diff_pdf_pages": 55,
+  "revision_pdf": "deep-linear-exact-fits-2026-10-29_13-33-54_Paris.pdf",
+  "revision_pdf_sha256": "fda45703709ee46494032f38c084f67fc90184e6d8ed3dfa365ddd3b52e0c211",
+  "revision_pdf_pages": 55,
+  "engine": "XeTeX, TeX Live 2023, three passes",
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "leancode_blocks": 20,
+  "all_leancode_bodies_unchanged": true,
+  "manual_edits_of_diff_tex": [
+    "title-page date shown as one deleted and one added time",
+    "PDF title and subject set for the comparison"
+  ]
+}

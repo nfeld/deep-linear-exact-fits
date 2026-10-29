@@ -36,9 +36,8 @@ ordinary kernel replay.
 `all` scans the source, builds the target, replays its declarations, audits the
 statement, compares its fingerprint, and writes `logs/receipt-<UTC>.txt`.
 Require an explicit `FINGERPRINT MATCH`: a receipt alone is not evidence that
-all intended checks passed. The current driver can report “not compared” when
-the reference is missing; this release includes the required reference. Check
-it before running:
+all intended checks passed. The driver fails when the reference is missing or
+empty; this release includes it. Check it before running:
 
 ```bash
 test -s reference/fingerprint-multi.txt

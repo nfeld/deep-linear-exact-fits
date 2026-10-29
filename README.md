@@ -51,7 +51,7 @@ statements are distinguished below.
 | --- | --- |
 | [`ExactFitFull_2026_10_28_UTC.lean`](ExactFitFull_2026_10_28_UTC.lean) | All project proof declarations in one file, importing only Mathlib. The main theorem depends on `propext`, `Classical.choice`, and `Quot.sound`. |
 | [`exact-fit-local/`](exact-fit-local/README.md) | Container harness: source scan, build, ordinary kernel replay, statement and fingerprint audit, and receipt. |
-| [`paper/`](paper/README.md) | Preprint, TeX source, and revision comparison. |
+| [`paper/`](paper/README.md) | Preprint, TeX source, revision notes and red/blue comparisons. |
 | [`verification/`](verification/2026-10-28-agent-check/README.md) | Separate agent-operated source compilation, ordinary kernel replay, fingerprint comparison and source scan. |
 | [`certificates/`](certificates/README.md) | Instructions for publishing checking receipts and, optionally, signed attestations. |
 | [`exact-fit-local/logs/`](exact-fit-local/logs/README.md) | Author-run evidence and its documented redaction/integrity limitation. |

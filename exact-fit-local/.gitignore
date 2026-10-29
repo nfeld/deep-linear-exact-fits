@@ -1,0 +1,7 @@
+# Add a selected, reviewed receipt/log deliberately when publishing evidence.
+logs/*
+!logs/README.md
+project/.lake/
+project/ExactFitTarget.lean
+project/Fingerprint.lean
+tools/__pycache__/
